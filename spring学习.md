@@ -31,7 +31,7 @@ hibernate使用4.3
 
 
 
-领域对象
+领域对象: 各自
 
 DAO 数据访问对象
 
@@ -55,6 +55,9 @@ DAO 数据访问对象
 
 1．1．4 常用的Java EE服务器 
 
+tomacat
+jetty
+gboss
 
 
 
