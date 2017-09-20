@@ -900,7 +900,7 @@ JDK 5引入的动态代理机制，允许开发人员在运行时刻动态的创
 下面的代码用来代理一个实现了List接口的对象。所实现的功能也非常简单，那就是禁止使用List接口中的add方法。如果在getList中传入一个实现List接口的对象，那么返回的实际就是一个代理对象，尝试在该对象上调用add方法就会抛出来异常。
 
 
-```
+``` 
 public List getList(final List list) {
     return (List) Proxy.newProxyInstance(DummyProxy.class.getClassLoader(), new Class[] { List.class },
         new InvocationHandler() {
@@ -937,15 +937,39 @@ public List getList(final List list) {
 Class.forName(classNameStr)
 ```
 
+ApplicationContext 是Spring常用的接口.
+
+
+最常被使用的 ApplicationContext 接口实现：
+
+1. FileSystemXmlApplicationContext：该容器从 XML 文件中加载已被定义的 bean。在这里，你需要提供给构造器 XML 文件的完整路径
+
+1. ClassPathXmlApplicationContext：该容器从 XML 文件中加载已被定义的 bean。在这里，你不需要提供 XML 文件的完整路径，只需正确配置 CLASSPATH 环境变量即可，因为，容器会从 CLASSPATH 中搜索 bean 配置文件。
+
+1. WebXmlApplicationContext：该容器会在一个 web 应用程序的范围内加载在 XML 文件中已被定义的 bean。
+
+
 7．2．3 在Eclipse中使用Spring 
 
-7．3 Spring的核心机制：依赖注入 
+7．3 Spring的核心机制依赖注入
+
+
+spring框架的核心功能有两个.
+
+1. 容器的超级工厂,负责创建,管理所有的java对象. Bean
+1. Spring管理所有Bean间的依赖关系. 采用依赖注入的方式来管理.
 
 7．3．1 理解依赖注入 
+
+依赖注入的两种注入的方式:
+1. 设值注入  set方法
+1. 构造注入  构造器注入
 
 7．3．2 设值注入 
 
 7．3．3 构造注入 
+
+构造注入的本质:spring 调用无参数构造器来创建对象,利用构造器参数来执行初始化.
 
 7．3．4 两种注入方式的对比 
 
