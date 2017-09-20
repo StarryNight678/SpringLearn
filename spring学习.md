@@ -16,20 +16,9 @@ spring 使用4.0
 hibernate使用4.3
 
 
-
-
-
-
-
-
-
 1．1 Java EE应用概述 
 
-
-
 1．1．1 Java EE应用的分层模型 
-
-
 
 领域对象: 各自
 
@@ -50,9 +39,6 @@ DAO 数据访问对象
 1．1．3 Java EE应用的结构和优势 
 
 
-
-
-
 1．1．4 常用的Java EE服务器 
 
 tomacat
@@ -60,9 +46,15 @@ jetty
 gboss
 
 
-
-
 1．2 轻量级Java EE应用相关技术 
+
+JSP servlet javaBean
+
+JSP（全称JavaServer Pages）是由Sun Microsystems公司倡导和许多公司参与共同创建的一种使软件开发者可以响应客户端请求，而动态生成HTML、XML或其他格式文档的Web网页的技术标准。JSP技术是以Java语言作为脚本语言的，JSP网页为整个服务器端的Java库单元提供了一个接口来服务于HTTP的应用程序。
+
+Servlet（Server Applet），全称Java Servlet，未有中文译文。是用Java编写的服务器端程序。其主要功能在于交互式地浏览和修改数据，生成动态Web内容。狭义的Servlet是指Java语言实现的一个接口，广义的Servlet是指任何实现了这个Servlet接口的类，一般情况下，人们将Servlet理解为后者。
+Servlet运行于支持Java的应用服务器中。从实现上讲，Servlet可以响应任何类型的请求，但绝大多数情况下Servlet只用来扩展基于HTTP协议的Web服务器。
+
 
 
 
@@ -72,13 +64,30 @@ gboss
 
 1．2．2 Struts 2．3及替代技术 
 
+Struts是最早的MVC框架,资料多,太老
 
+- Struts 2.3  Spring MVC  JSF 三个框架相互竞争
+
+ Spring MVC 由于Spring极高的市场占有率
+
+ JSF oracle 推荐的JavaEE规范.  占有率最少.
 
 1．2．3 Hibernate 4．3及替代技术 
 
+需要采用面向对象的方式访问数据库.ORM
 
+对象关系映射（英语：(Object Relational Mapping，简称ORM，或O/RM，或O/R mapping），是一种程序技术，用于实现面向对象编程语言里不同类型系统的数据之间的转换[1]  。从效果上说，它其实是创建了一个可在编程语言里使用的--“虚拟对象数据库”。
+
+Hibernate 是轻量级额ORM框架.
+
+将传统的java对象映射成了持久化的类.
+
+除了Hibernate 外,轻量级的JavaEE 可以使用MyBatis 框架作为持久层.
 
 1．2．4 Spring 4．0及替代技术 
+
+Spring可以将大部分框架无缝整合.
+
 
 1．3 Tomcat的下载和安装 
 
@@ -759,6 +768,42 @@ gboss
 #  第7章 Spring的基本用法 
 
 7．1 Spring简介和Spring 4．0的变化 
+
+依赖注入
+
+AOP
+
+在软件业，AOP为Aspect Oriented Programming的缩写，意为：面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。
+
+![](https://www.ibm.com/developerworks/cn/java/wa-spring1/spring_framework.gif)
+
+组成 Spring 框架的每个模块（或组件）都可以单独存在，或者与其他一个或多个模块联合实现。每个模块的功能如下：
+核心容器：核心容器提供 Spring 框架的基本功能。核心容器的主要组件是 BeanFactory，它是工厂模式的实现。BeanFactory 使用控制反转 （IOC） 模式将应用程序的配置和依赖性规范与实际的应用程序代码分开。
+
+Spring 上下文：Spring 上下文是一个配置文件，向 Spring 框架提供上下文信息。Spring 上下文包括企业服务，例如 JNDI、EJB、电子邮件、国际化、校验和调度功能。
+
+Spring AOP：通过配置管理特性，Spring AOP 模块直接将面向方面的编程功能集成到了 Spring 框架中。所以，可以很容易地使 Spring 框架管理的任何对象支持 AOP。Spring AOP 模块为基于 Spring 的应用程序中的对象提供了事务管理服务。通过使用 Spring AOP，不用依赖 EJB 组件，就可以将声明性事务管理集成到应用程序中。
+
+Spring DAO：JDBC DAO 抽象层提供了有意义的异常层次结构，可用该结构来管理异常处理和不同数据库供应商抛出的错误消息。异常层次结构简化了错误处理，并且极大地降低了需要编写的异常代码数量（例如打开和关闭连接）。Spring DAO 的面向 JDBC 的异常遵从通用的 DAO 异常层次结构。
+
+Spring ORM：Spring 框架插入了若干个 ORM 框架，从而提供了 ORM 的对象关系工具，其中包括 JDO、Hibernate 和 iBatis SQL Map。所有这些都遵从 Spring 的通用事务和 DAO 异常层次结构。
+
+Spring Web 模块：Web 上下文模块建立在应用程序上下文模块之上，为基于 Web 的应用程序提供了上下文。所以，Spring 框架支持与 Jakarta Struts 的集成。Web 模块还简化了处理多部分请求以及将请求参数绑定到域对象的工作。
+
+Spring MVC 框架：MVC 框架是一个全功能的构建 Web 应用程序的 MVC 实现。通过策略接口，MVC 框架变成为高度可配置的，MVC 容纳了大量视图技术，其中包括 JSP、Velocity、Tiles、iText 和 POI。
+
+Spring 框架的功能可以用在任何 J2EE 服务器中，大多数功能也适用于不受管理的环境。Spring 的核心要点是：支持不绑定到特定 J2EE 服务的可重用业务和数据访问对象。毫无疑问，这样的对象可以在不同 J2EE 环境 （Web 或 EJB）、独立应用程序、测试环境之间重用。
+
+
+- IOC:
+
+控制反转模式（也称作依赖性介入）的基本概念是：不创建对象，但是描述创建它们的方式。在代码中不直接与对象和服务连接，但在配置文件中描述哪一个组件需要哪一项服务。容器 （在 Spring 框架中是 IOC 容器） 负责将这些联系在一起。
+在典型的 IOC 场景中，容器创建了所有对象，并设置必要的属性将它们连接在一起，决定什么时间调用方法。下表列出了 IOC 的一个实现模式。
+
+- AOP:
+
+
+
 
 7．1．1 Spring简介 
 
